@@ -279,7 +279,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private  void getadpatorcolors()
     {
-        
+        //herefor push
     }
 
 
