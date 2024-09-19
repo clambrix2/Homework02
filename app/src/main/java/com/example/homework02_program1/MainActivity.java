@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.provider.SyncStateContract;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -77,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         buttonpress();
         listofcolors = new ArrayList<ColorController>();
         fillcolorlist();
+        editcolor();
     }
     private void setmax()
     {
@@ -188,6 +190,7 @@ public class MainActivity extends AppCompatActivity {
         Et_J_Redint.setText("" + red);
         Et_J_Greenint.setText( "" + green);
         Et_J_Blueint.setText("" + blue);
+        Et_j_hexcodevaule.setText(hexcolor);
     }
     public void onSliderChanged()
     {
@@ -270,16 +273,30 @@ public class MainActivity extends AppCompatActivity {
     }
     private  void editcolor()
     {
-        Elv_J_Colorlist.setOnClickListener(new View.OnClickListener() {
+        Elv_J_Colorlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View view) {
-
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                getadpatorcolors();
             }
         });
+
     }
+    private void setsliderprogress()
+    {
+        Es_j_redslider.setProgress(red);
+        Es_j_greeslider.setProgress(green);
+        Es_j_blueslider.setProgress(blue);
+    }
+
     private  void getadpatorcolors()
     {
-        //herefor push
+        red = listofcolors.get(adapter.getCount() - 1).getRed();
+        green = listofcolors.get(adapter.getCount() -1 ).getGreen();
+        blue = listofcolors.get(adapter.getCount() -1 ).getBlue();
+        hexcolor = listofcolors.get(adapter.getCount() - 1).getHexcolor();
+        setslidercolor();
+        setsliderprogress();
+        hexcodebackground();
     }
 
 
