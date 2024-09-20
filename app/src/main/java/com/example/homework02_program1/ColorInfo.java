@@ -1,19 +1,17 @@
 package com.example.homework02_program1;
 
-import android.util.Log;
-
-public class ColorController {
+public class ColorInfo {
     private int red;
     private int green;
     private int blue;
     private String hexcolor;
     private Boolean iswhitetext;
 
-    public ColorController()
+    public ColorInfo()
     {
 
     }
-    public ColorController(int r, int g, int b)
+    public ColorInfo(int r, int g, int b)
     {
         red = r;
         green = g;

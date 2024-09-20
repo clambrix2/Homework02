@@ -20,8 +20,8 @@
         android:id="@+id/Et_V_cell_Redint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="51dp"
-        app:layout_constraintEnd_toEndOf="@+id/Et_V_cell_Red"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="48dp"
         app:layout_constraintStart_toEndOf="@+id/Et_V_cell_Red"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,8 +38,8 @@
         android:id="@+id/Et_V_cell_Greenint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
         android:layout_marginTop="51dp"
-        app:layout_constraintEnd_toEndOf="@+id/Et_V_cell_green"
         app:layout_constraintStart_toEndOf="@+id/Et_V_cell_green"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,7 +47,7 @@
         android:id="@+id/Et_V_cell_Blue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="130dp"
+        android:layout_marginEnd="129dp"
         android:text="Blue:"
         app:layout_constraintBaseline_toBaselineOf="@+id/Et_V_cell_Blueint"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -56,25 +56,26 @@
         android:id="@+id/Et_V_cell_Hexcode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
         android:text="Hex:"
         app:layout_constraintBaseline_toBaselineOf="@+id/Et_V_cell_hexcodevaule"
-        app:layout_constraintEnd_toEndOf="@+id/Et_V_cell_hexcodevaule" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/Et_V_cell_hexcodevaule"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toEndOf="@+id/Et_V_cell_Red"
-        app:layout_constraintStart_toEndOf="@+id/Et_V_cell_Red"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="29dp"
+        app:layout_constraintStart_toStartOf="@+id/Et_V_cell_Redint"
         app:layout_constraintTop_toBottomOf="@+id/Et_V_cell_Redint" />
 
     <TextView
         android:id="@+id/Et_V_cell_Blueint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
         android:layout_marginTop="51dp"
-        app:layout_constraintEnd_toEndOf="@+id/Et_V_cell_Blue"
         app:layout_constraintStart_toEndOf="@+id/Et_V_cell_Blue"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

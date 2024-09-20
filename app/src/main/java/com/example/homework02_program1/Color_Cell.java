@@ -2,7 +2,6 @@ package com.example.homework02_program1;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,22 +9,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class Color_Cell extends BaseAdapter {
 
     Context context;
-    ArrayList<ColorController> listsofcolors;
+    ArrayList<ColorInfo> listsofcolors;
 
-    public Color_Cell(Context c, ArrayList<ColorController> cl)
+    public Color_Cell(Context c, ArrayList<ColorInfo> cl)
     {
         context = c;
         listsofcolors = cl;
@@ -62,7 +53,7 @@ public class Color_Cell extends BaseAdapter {
         TextView blueint = view.findViewById(R.id.Et_V_cell_Blueint);
         TextView hexcode = view.findViewById(R.id.Et_V_cell_Hexcode);
         TextView hexcodevaule = view.findViewById(R.id.Et_V_cell_hexcodevaule);
-        ColorController emp = listsofcolors.get(i);
+        ColorInfo emp = listsofcolors.get(i);
         redint.setText("" + emp.getRed());
         Log.d("Here Before Error", "Esrror");
         greenint.setText("" + emp.getGreen());
@@ -78,6 +69,17 @@ public class Color_Cell extends BaseAdapter {
             blueint.setTextColor(Color.WHITE);
             hexcode.setTextColor(Color.WHITE);
             hexcodevaule.setTextColor(Color.WHITE);
+        }
+        else
+        {red.setTextColor(Color.BLACK);
+            redint.setTextColor(Color.BLACK);
+            green.setTextColor(Color.BLACK);
+            greenint.setTextColor(Color.BLACK);
+            blue.setTextColor(Color.BLACK);
+            blueint.setTextColor(Color.BLACK);
+            hexcode.setTextColor(Color.BLACK);
+            hexcodevaule.setTextColor(Color.BLACK);
+
         }
         view.setBackgroundColor(Color.parseColor(emp.getHexcolor()));
         return view;

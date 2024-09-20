@@ -1,23 +1,20 @@
+//Name: Chase Lambrix
+//Data: 9-20-24
+//desc program that allow people to make colors and get the hex value for them on their phone. you are able to pick saved colors and make a new color from that
 package com.example.homework02_program1;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.provider.SyncStateContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.SeekBar;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
 
@@ -42,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     View Ev_j_view;
 
-    ArrayList<ColorController> listofcolors;
+    ArrayList<ColorInfo> listofcolors;
 
     Color_Cell adapter;
 
@@ -76,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         setslidercolor();
         onSliderChanged();
         buttonpress();
-        listofcolors = new ArrayList<ColorController>();
+        listofcolors = new ArrayList<ColorInfo>();
         fillcolorlist();
         editcolor();
     }
@@ -90,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
     private void changedtextcolor()
     {
 
-        if(blue >= 127 && green <= 127 && red <= 127)
+        if(blue >= 127 && green < 127 && red <= 127)
         {
             Log.d("Here changing color: ", "Did it work");
             Et_J_Blueint.setTextColor(Color.WHITE);
@@ -104,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
             Et_j_hexcodevaule.setTextColor(Color.WHITE);
             iswhiteext = true;
         }
-        else if(blue >= 127 && green > 127)
+        else if(blue >= 127 && green >= 127)
         {
             Et_J_Redint.setTextColor(Color.BLACK);
             Et_J_Greenint.setTextColor(Color.BLACK);
@@ -130,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             Et_j_hexcodetext.setTextColor(Color.WHITE);
             iswhiteext = true;
         }
-        else if(red >= 127)
+        else if(red >= 127 || green >= 127)
         {
             Et_J_Redint.setTextColor(Color.BLACK);
             Et_J_Greenint.setTextColor(Color.BLACK);
@@ -143,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
             Et_j_hexcodevaule.setTextColor(Color.BLACK);
             iswhiteext = false;
         }
+
     }
 
     private  void buttonpress()
@@ -156,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private  void setcolors()
     {
-        ColorController colortoadd = new ColorController();
+        ColorInfo colortoadd = new ColorInfo();
         colortoadd.setIswhitetext(iswhiteext);
         colortoadd.setRed(red);
         colortoadd.setGreen(green);
@@ -199,6 +197,8 @@ public class MainActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int i, boolean b)
             {
                 red = seekBar.getProgress();
+                //for some reason the formating for the hexcode wasn't right when it was in it own function, yet when i move it its works. i guess code will be code.
+                hexcolor = String.format("#%02X%02X%02X", red, green, blue);
                 setslidercolor();
                 hexcodebackground();
                 changedtextcolor();
@@ -220,6 +220,7 @@ public class MainActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int i, boolean b)
             {
                 green = seekBar.getProgress();
+                hexcolor = String.format("#%02X%02X%02X", red, green, blue);
                 setslidercolor();
                 hexcodebackground();
                 changedtextcolor();
@@ -243,6 +244,7 @@ public class MainActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int i, boolean b)
             {
                 blue = seekBar.getProgress();
+                hexcolor = String.format("#%02X%02X%02X", red, green, blue);
                 setslidercolor();
                 hexcodebackground();
                 changedtextcolor();
@@ -262,7 +264,6 @@ public class MainActivity extends AppCompatActivity {
     }
     private void hexcodebackground()
     {
-     hexcolor = String.format("#%02x%02x%02x", red, green, blue);
         setbackgroundcolor(hexcolor);
     }
 
@@ -276,7 +277,7 @@ public class MainActivity extends AppCompatActivity {
         Elv_J_Colorlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                getadpatorcolors();
+                getadpatorcolors(i);
             }
         });
 
@@ -288,12 +289,13 @@ public class MainActivity extends AppCompatActivity {
         Es_j_blueslider.setProgress(blue);
     }
 
-    private  void getadpatorcolors()
+    private  void getadpatorcolors(int i)
     {
-        red = listofcolors.get(adapter.getCount() - 1).getRed();
-        green = listofcolors.get(adapter.getCount() -1 ).getGreen();
-        blue = listofcolors.get(adapter.getCount() -1 ).getBlue();
-        hexcolor = listofcolors.get(adapter.getCount() - 1).getHexcolor();
+
+        red = listofcolors.get((int) (adapter.getItemId(i))).getRed();
+        green = listofcolors.get((int) adapter.getItemId(i)).getGreen();
+        blue = listofcolors.get((int) adapter.getItemId(i)).getBlue();
+        hexcolor = listofcolors.get((int) adapter.getItemId(i)).getHexcolor();
         setslidercolor();
         setsliderprogress();
         hexcodebackground();

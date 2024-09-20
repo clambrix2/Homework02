@@ -67,10 +67,10 @@
 
     <ListView
         android:id="@+id/Elv_V_Colorlist"
-        android:layout_width="399dp"
-        android:layout_height="337dp"
-        android:layout_marginTop="396dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="414dp"
+        android:layout_height="534dp"
+        android:layout_marginTop="384dp"
+        android:layout_marginEnd="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
